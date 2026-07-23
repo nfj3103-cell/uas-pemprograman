@@ -15,5 +15,10 @@ urlpatterns = [
         logout_view,
         name="logout"
     ),
+    path(
+    "staff-login/",
+    login_view,
+    name="staff_login"
+),
 
 ]
