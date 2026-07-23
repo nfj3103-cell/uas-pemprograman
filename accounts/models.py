@@ -1,26 +1,39 @@
-from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.contrib.auth.models import User
 
 
-class User(AbstractUser):
+class Profile(models.Model):
 
-    class Role(models.TextChoices):
-        ADMIN = "ADMIN", "Admin"
-        CUSTOMER = "CUSTOMER", "Customer"
-        PETUGAS = "PETUGAS", "Petugas Check In"
-
-
-    role = models.CharField(
-        max_length=20,
-        choices=Role.choices,
-        default=Role.CUSTOMER
+    ROLE_CHOICES = (
+        ('CUSTOMER', 'Customer'),
+        ('ADMIN', 'Admin'),
+        ('PETUGAS', 'Petugas'),
     )
 
-    phone = models.CharField(
+
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE
+    )
+
+
+    no_hp = models.CharField(
         max_length=15,
         blank=True
     )
 
 
+    role = models.CharField(
+        max_length=20,
+        choices=ROLE_CHOICES,
+        default='CUSTOMER'
+    )
+
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+
     def __str__(self):
-        return self.username
+        return self.user.username
