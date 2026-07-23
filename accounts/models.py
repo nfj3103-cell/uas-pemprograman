@@ -21,7 +21,9 @@ class Profile(models.Model):
         max_length=15,
         blank=True
     )
-
+    alamat = models.TextField(
+        blank=True
+    )
 
     role = models.CharField(
         max_length=20,

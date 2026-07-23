@@ -59,6 +59,7 @@ input{
 .password-box{
 
 position:relative;
+width:100%;
 
 }
 
@@ -66,21 +67,20 @@ position:relative;
 
 .password-box input{
 
-width:100% !important
-
+width:100% !important ;
 padding:0 45px 0 15px;
-
-    border:1px solid #ddd;
-
-    border-radius:12px;
-
-    font-size:16px;
-
-    outline:none;
+border:1px solid #ddd;
+border-radius:12px;
+font-size:16px;
+outline:none;
 
 }
 
+.password-box input:focus{
 
+    border-color:#ff9800;
+
+}
 
 .eye{
 
@@ -95,7 +95,7 @@ transform:translateY(-50%);
 cursor:pointer;
 
 font-size:20px;
-
+ z-index:2;
 }
 
 </style>
