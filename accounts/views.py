@@ -34,7 +34,7 @@ def register(request):
 
 def login_view(request):
 
-    error = None
+    pesan_error = None
 
 
     if request.method == "POST":
@@ -61,50 +61,34 @@ def login_view(request):
 
 
                 if role == "ADMIN":
-
-                    return redirect(
-                        "/dashboard-admin/"
-                    )
+                    return redirect("/dashboard-admin/")
 
 
                 elif role == "PETUGAS":
-
-                    return redirect(
-                        "/dashboard-petugas/"
-                    )
-
-
-                elif role == "CUSTOMER":
-
-                    return redirect(
-                        "/dashboard-customer/"
-                    )
+                    return redirect("/dashboard-petugas/")
 
 
                 else:
+                    return redirect("/dashboard-customer/")
 
-                    return redirect("/")
 
-
-            except Profile.DoesNotExist:
+            except:
 
                 return redirect("/")
 
 
         else:
 
-            error = "Email atau kata sandi salah!"
-
+            pesan_error = "Email atau kata sandi salah! Silakan coba lagi."
 
 
     return render(
         request,
         "registration/login.html",
         {
-            "error": error
+            "pesan_error": pesan_error
         }
     )
-
 
 
 def logout_view(request):
