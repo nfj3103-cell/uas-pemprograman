@@ -692,7 +692,56 @@ transform:none;
 
 
 }
+.password-box{
 
+position:relative;
+
+}
+
+
+.password-box input{
+
+width:100%;
+
+padding-right:45px;
+
+}
+
+
+.eye{
+
+position:absolute;
+
+right:15px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+cursor:pointer;
+
+font-size:20px;
+
+}
+
+
+.error-message{
+
+background:#ffe5e5;
+
+color:#ff4d4d;
+
+padding:12px;
+
+border-radius:15px;
+
+margin-bottom:15px;
+
+text-align:center;
+
+font-weight:600;
+
+}
 </style>
 
 
@@ -802,7 +851,16 @@ Login and join the festival vibes ✨
 </div>
 
 
+{% if error %}
 
+<div class="error-message">
+
+{{error}}
+
+</div>
+
+
+{% endif %}
 <form method="POST">
 
 {% csrf_token %}
@@ -814,12 +872,26 @@ placeholder="Email"
 >
 
 
+<div class="password-box">
+
 <input 
+id="password"
 type="password"
 name="password"
 placeholder="Password"
+required
 >
 
+
+<span 
+onclick="showPassword()"
+class="eye"
+>
+👁
+</span>
+
+
+</div>
 
 <button>
 Login
@@ -889,7 +961,30 @@ Summer Pop Festival 2026
 </div>
 
 
+<script>
 
+function showPassword(){
+
+let password =
+document.getElementById("password");
+
+
+if(password.type === "password"){
+
+password.type="text";
+
+}
+
+else{
+
+password.type="password";
+
+}
+
+
+}
+
+</script>
 </body>
 
 </html>
