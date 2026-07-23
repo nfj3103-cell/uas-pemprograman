@@ -1,35 +1,529 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="id">
 
 <head>
 
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>
-Customer Dashboard
+Dashboard Customer - Summer Pop Festival
 </title>
+
+
+<style>
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+
+
+body{
+
+    background:linear-gradient(
+        135deg,
+        #fff4c7,
+        #ffd59a
+    );
+
+    min-height:100vh;
+
+}
+
+
+
+.navbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 50px;
+
+    background:white;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+
+}
+
+
+
+.logo{
+
+    font-size:25px;
+
+    font-weight:800;
+
+    color:#ff9800;
+
+}
+
+
+
+.logout{
+
+    text-decoration:none;
+
+    background:#ff9800;
+
+    color:white;
+
+    padding:10px 25px;
+
+    border-radius:30px;
+
+}
+
+
+
+.container{
+
+    padding:40px 60px;
+
+}
+
+
+
+
+.hero{
+
+    background:white;
+
+    border-radius:35px;
+
+    padding:45px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+
+
+.hero h1{
+
+    font-size:45px;
+
+    color:#ff8c00;
+
+}
+
+
+
+.hero p{
+
+    margin-top:15px;
+
+    font-size:18px;
+
+    color:#666;
+
+}
+
+
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    background:#ff9800;
+
+    color:white;
+
+    padding:15px 35px;
+
+    border-radius:35px;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+
+
+.card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:30px;
+
+    transition:.3s;
+
+}
+
+
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
+
+.card h2{
+
+    color:#ff9800;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+.schedule{
+
+    margin-top:35px;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:30px;
+
+}
+
+
+
+.schedule table{
+
+    width:100%;
+
+    margin-top:20px;
+
+}
+
+
+
+td,th{
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+
+
+
+
+@media(max-width:900px){
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+
+.hero{
+
+flex-direction:column;
+
+}
+
+}
+
+
+
+</style>
 
 
 </head>
 
 
+
 <body>
 
 
+<nav class="navbar">
+
+
+<div class="logo">
+
+🎵 Summer Pop Festival
+
+</div>
+
+
+
+<a href="/logout/" class="logout">
+
+Logout
+
+</a>
+
+
+</nav>
+
+
+
+
+
+<div class="container">
+
+
+
+<section class="hero">
+
+
+<div>
+
+
 <h1>
-🎵 Summer Pop Festival 2026
+Halo, {{user.first_name}} 👋
 </h1>
 
 
-<h2>
-Selamat datang {{user.first_name}}
-</h2>
-
-
 <p>
-Ini adalah halaman customer.
+Selamat datang di Summer Pop Festival 2026.
+Nikmati pengalaman musik terbesar dengan berbagai performer terbaik.
 </p>
 
 
+
+<a href="#" class="btn">
+
+🎟 Pesan Tiket
+
+</a>
+
+
+</div>
+
+
+<div style="font-size:120px">
+
+🎤🎶
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+<h2>
+🎤 Event
+</h2>
+
+<p>
+
+Summer Pop Festival 2026
+
+</p>
+
+
+<p>
+
+Festival musik musim panas dengan penampilan spesial.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h2>
+📅 Jadwal
+</h2>
+
+<p>
+
+15 - 17 Agustus 2026
+
+</p>
+
+
+<p>
+
+Venue: Main Stage Festival
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+<h2>
+🎟 Tiket
+</h2>
+
+<p>
+
+Belum ada tiket aktif.
+
+</p>
+
+
+<p>
+
+Silakan pesan tiket sekarang.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="schedule">
+
+
+<h2>
+
+📌 Jadwal Acara
+
+</h2>
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Tanggal
+</th>
+
+<th>
+Acara
+</th>
+
+<th>
+Waktu
+</th>
+
+
+</tr>
+
+
+
+<tr>
+
+<td>
+15 Agustus
+</td>
+
+<td>
+Opening Festival
+</td>
+
+<td>
+18.00
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+16 Agustus
+</td>
+
+<td>
+Main Performance
+</td>
+
+<td>
+19.00
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+17 Agustus
+</td>
+
+<td>
+Closing Festival
+</td>
+
+<td>
+20.00
+</td>
+
+</tr>
+
+
+</table>
+
+
+</div>
+
+
+
+</div>
+
+
 </body>
+
 
 </html>
