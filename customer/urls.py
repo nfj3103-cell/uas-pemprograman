@@ -1,13 +1,13 @@
 from django.urls import path
-from .views import home
+from . import views
 
 
 urlpatterns = [
 
     path(
-        "",
-        home,
-        name="home"
+        "dashboard-customer/",
+        views.dashboard_customer,
+        name="dashboard_customer"
     ),
 
 ]

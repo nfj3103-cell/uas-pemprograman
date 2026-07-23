@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegisterForm
+from .models import Profile
 
 
 def register(request):
@@ -13,7 +14,7 @@ def register(request):
 
             form.save()
 
-            return redirect('login')
+            return redirect("login")
 
 
     else:
@@ -23,9 +24,9 @@ def register(request):
 
     return render(
         request,
-        'registration/register.html',
+        "registration/register.html",
         {
-            'form': form
+            "form": form
         }
     )
 
@@ -33,19 +34,13 @@ def register(request):
 
 def login_view(request):
 
-    from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-
-
-def login_view(request):
-
-    pesan_error = None
+    error = None
 
 
     if request.method == "POST":
 
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+        email = request.POST.get("email")
+        password = request.POST.get("password")
 
 
         user = authenticate(
@@ -59,19 +54,54 @@ def login_view(request):
 
             login(request, user)
 
-            return redirect('/')
+
+            try:
+
+                role = user.profile.role
+
+
+                if role == "ADMIN":
+
+                    return redirect(
+                        "/dashboard-admin/"
+                    )
+
+
+                elif role == "PETUGAS":
+
+                    return redirect(
+                        "/dashboard-petugas/"
+                    )
+
+
+                elif role == "CUSTOMER":
+
+                    return redirect(
+                        "/dashboard-customer/"
+                    )
+
+
+                else:
+
+                    return redirect("/")
+
+
+            except Profile.DoesNotExist:
+
+                return redirect("/")
 
 
         else:
 
-            pesan_error = "Email atau kata sandi salah!"
+            error = "Email atau kata sandi salah!"
+
 
 
     return render(
         request,
         "registration/login.html",
         {
-            "pesan_error": pesan_error
+            "error": error
         }
     )
 
@@ -81,4 +111,4 @@ def logout_view(request):
 
     logout(request)
 
-    return redirect('login')
+    return redirect("login")

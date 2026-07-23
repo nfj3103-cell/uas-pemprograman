@@ -1,5 +1,9 @@
 from django.shortcuts import render
 
 
-def home(request):
-    return render(request, "customer/home.html")
+def dashboard_customer(request):
+
+    return render(
+        request,
+        "customer/dashboard.html"
+    )
