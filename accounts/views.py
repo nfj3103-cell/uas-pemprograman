@@ -1,48 +1,29 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
+from .forms import RegisterForm
 
 
-def login_view(request):
+def register(request):
 
     if request.method == "POST":
 
-        username = request.POST["username"]
-        password = request.POST["password"]
+        form = RegisterForm(request.POST)
+
+        if form.is_valid():
+
+            form.save()
+
+            return redirect('login')
 
 
-        user = authenticate(
-            request,
-            username=username,
-            password=password
-        )
+    else:
 
-
-        if user is not None:
-
-            login(request,user)
-
-
-            if user.role == "ADMIN":
-                return redirect("/admin-dashboard/")
-
-
-            elif user.role == "PETUGAS":
-                return redirect("/petugas/")
-
-
-            else:
-                return redirect("/")
+        form = RegisterForm()
 
 
     return render(
         request,
-        "registration/login.html"
+        'registration/register.html',
+        {
+            'form': form
+        }
     )
-
-
-
-def logout_view(request):
-
-    logout(request)
-
-    return redirect("/login/")

@@ -1,5 +1,7 @@
 from django.urls import path
 from .views import login_view, logout_view
+from django.urls import path
+from . import views
 
 
 urlpatterns = [
@@ -21,4 +23,12 @@ urlpatterns = [
     name="staff_login"
 ),
 
+]
+urlpatterns = [
+
+    path(
+        'register/',
+        views.register,
+        name='register'
+    ),
 ]
