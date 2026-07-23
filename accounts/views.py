@@ -33,10 +33,19 @@ def register(request):
 
 def login_view(request):
 
+    from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+
+
+def login_view(request):
+
+    pesan_error = None
+
+
     if request.method == "POST":
 
-        email = request.POST['email']
-        password = request.POST['password']
+        email = request.POST.get('email')
+        password = request.POST.get('password')
 
 
         user = authenticate(
@@ -53,9 +62,17 @@ def login_view(request):
             return redirect('/')
 
 
+        else:
+
+            pesan_error = "Email atau kata sandi salah!"
+
+
     return render(
         request,
-        'registration/login.html'
+        "registration/login.html",
+        {
+            "pesan_error": pesan_error
+        }
     )
 
 

@@ -742,6 +742,51 @@ text-align:center;
 font-weight:600;
 
 }
+.error-message{
+
+background:#ffe5e5;
+
+color:#ff4d4d;
+
+padding:12px;
+
+border-radius:15px;
+
+margin-bottom:20px;
+
+text-align:center;
+
+font-weight:600;
+
+animation:shake .3s;
+
+}
+
+
+
+@keyframes shake{
+
+0%{
+transform:translateX(0);
+}
+
+25%{
+transform:translateX(-5px);
+}
+
+50%{
+transform:translateX(5px);
+}
+
+75%{
+transform:translateX(-5px);
+}
+
+100%{
+transform:translateX(0);
+}
+
+}
 </style>
 
 
@@ -851,14 +896,13 @@ Login and join the festival vibes ✨
 </div>
 
 
-{% if error %}
+{% if pesan_error %}
 
 <div class="error-message">
 
-{{error}}
+⚠️ {{ pesan_error }}
 
 </div>
-
 
 {% endif %}
 <form method="POST">
