@@ -197,3 +197,42 @@ class Payment(models.Model):
     def __str__(self):
 
         return f"Payment {self.booking.id}"
+
+class ETicket(models.Model):
+
+    STATUS_CHOICES = (
+
+        ('VALID', 'Valid'),
+        ('USED', 'Sudah Digunakan'),
+        ('EXPIRED', 'Kadaluarsa'),
+
+    )
+
+
+    booking = models.OneToOneField(
+        Booking,
+        on_delete=models.CASCADE
+    )
+
+
+    kode_tiket = models.CharField(
+        max_length=50,
+        unique=True
+    )
+
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='VALID'
+    )
+
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+
+    def __str__(self):
+
+        return self.kode_tiket
