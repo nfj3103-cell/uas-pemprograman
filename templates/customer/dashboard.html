@@ -1,496 +1,125 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html>
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>
-Dashboard Customer | Summer Pop Festival
-</title>
-
+<title>Customer Dashboard</title>
 
 <style>
 
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI', sans-serif;
-}
-
-
-
 body{
-
-    background:linear-gradient(
-        135deg,
-        #fff4c4,
-        #ffd18a,
-        #ffe4d0
-    );
-
-    min-height:100vh;
-
+    margin:0;
+    font-family:Arial;
+    background:#fff6e5;
 }
 
 
-
-/* NAVBAR */
+/* navbar */
 
 .navbar{
 
-    background:white;
-
-    padding:20px 50px;
-
+    background:#ff9800;
+    color:white;
+    padding:20px 40px;
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 
-    box-shadow:0 8px 25px rgba(0,0,0,0.08);
-
 }
-
 
 
 .logo{
 
-    font-size:26px;
-
-    font-weight:800;
-
-    color:#ff9800;
+    font-size:24px;
+    font-weight:bold;
 
 }
-
-
-
-.nav-menu{
-
-    display:flex;
-
-    gap:25px;
-
-    align-items:center;
-
-}
-
-
-
-.nav-menu a{
-
-    text-decoration:none;
-
-    color:#555;
-
-    font-weight:600;
-
-}
-
 
 
 .logout{
 
-    background:#ff9800;
-
-    color:white!important;
-
-    padding:10px 25px;
-
-    border-radius:30px;
-
-}
-
-
-
-
-
-/* MAIN */
-
-.container{
-
-    padding:40px 60px;
-
-}
-
-
-
-/* HERO */
-
-.hero{
-
     background:white;
-
-    border-radius:35px;
-
-    padding:45px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
-
-}
-
-
-
-.hero h1{
-
-    font-size:45px;
-
-    color:#ff8c00;
-
-}
-
-
-
-.hero p{
-
-    margin-top:15px;
-
-    color:#777;
-
-    font-size:18px;
-
-    max-width:600px;
-
-}
-
-
-
-.btn{
-
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:15px 35px;
-
-    background:linear-gradient(
-        45deg,
-        #ff9800,
-        #ff6f61
-    );
-
-    color:white;
-
-    border-radius:40px;
-
+    color:#ff9800;
+    padding:10px 20px;
+    border-radius:20px;
     text-decoration:none;
 
-    font-weight:bold;
-
-    transition:.3s;
-
 }
 
 
-.btn:hover{
-
-    transform:translateY(-5px);
-
-}
-
-
-
-
-.music-icon{
-
-    font-size:120px;
-
-}
-
-
-
-
-
-/* PROFILE */
-
-.profile{
-
-    margin-top:35px;
-
-    background:white;
-
-    padding:25px;
-
-    border-radius:30px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-}
-
-
-
-.profile h3{
-
-    color:#ff9800;
-
-}
-
-
-
-
-
-/* QUICK MENU */
-
-
-.quick{
-
-    display:grid;
-
-    grid-template-columns:repeat(4,1fr);
-
-    gap:20px;
-
-    margin-top:35px;
-
-}
-
-
-
-.menu-card{
-
-    background:white;
-
-    padding:25px;
-
-    text-align:center;
-
-    border-radius:25px;
-
-    transition:.3s;
-
-}
-
-
-
-.menu-card:hover{
-
-    transform:translateY(-8px);
-
-}
-
-
-
-.menu-card span{
-
-    font-size:35px;
-
-}
-
-
-
-/* SECTION */
-
-
-.section{
-
-    margin-top:35px;
-
-    background:white;
-
-    padding:35px;
-
-    border-radius:35px;
-
-}
-
-
-
-.section h2{
-
-    color:#ff9800;
-
-    margin-bottom:20px;
-
-}
-
-
-
-/* EVENT CARD */
-
-
-.event-card{
-
-    background:#fff7e8;
-
-    padding:25px;
-
-    border-radius:25px;
-
-}
-
-
-
-.event-card h3{
-
-    color:#ff8c00;
-
-}
-
-
-
-
-
-/* SCHEDULE */
-
-
-.schedule{
-
-    display:grid;
-
-    gap:15px;
-
-}
-
-
-
-.schedule-item{
-
-    background:#fff7e8;
-
-    padding:20px;
-
-    border-radius:20px;
-
-    display:flex;
-
-    justify-content:space-between;
-
-}
-
-
-
-
-
-/* TICKET */
-
-
-.ticket{
-
-    background:linear-gradient(
-        120deg,
-        #ff9800,
-        #ffcc70
-    );
-
-    color:white;
-
-    padding:30px;
-
-    border-radius:30px;
-
-}
-
-
-
-.ticket button{
-
-    margin-top:20px;
-
-    border:none;
-
-    padding:12px 30px;
-
-    border-radius:30px;
-
-    background:white;
-
-    color:#ff9800;
-
-    font-weight:bold;
-
-}
-
-
-
-
-
-/* RESPONSIVE */
-
-
-@media(max-width:900px){
-
-
-.hero{
-
-    flex-direction:column;
-
-}
-
-
-.quick{
-
-    grid-template-columns:1fr 1fr;
-
-}
-
+/* container */
 
 .container{
 
-    padding:20px;
+    padding:40px;
 
 }
 
 
+.welcome{
+
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 20px #ddd;
+
 }
 
+
+.cards{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:30px;
+
+}
+
+
+.card{
+
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 5px 15px #ddd;
+
+}
+
+
+.card h2{
+
+    color:#ff9800;
+
+}
+
+
+button{
+
+    background:#ff9800;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:20px;
+
+}
 
 
 </style>
 
-
 </head>
-
 
 
 <body>
 
 
-
-<nav class="navbar">
-
+<div class="navbar">
 
 <div class="logo">
-
 🎵 Summer Pop Festival
-
 </div>
 
 
-
-<div class="nav-menu">
-
-
-<a href="#">
-Home
-</a>
-
-
-<a href="#">
-Event
-</a>
-
-
-<a href="#">
-Tiket
-</a>
-
-
-<a href="/logout/" class="logout">
+<a class="logout" href="/logout/">
 Logout
 </a>
 
@@ -498,350 +127,122 @@ Logout
 </div>
 
 
-</nav>
-
-
-
-
-
 
 <div class="container">
 
 
-
-
-
-<!-- HERO -->
-
-<div class="hero">
-
-
-<div>
-
+<div class="welcome">
 
 <h1>
 Halo, {{user.first_name}} 👋
 </h1>
 
-
 <p>
-
-Selamat datang di Summer Pop Festival 2026.
-Nikmati pengalaman musik terbesar dengan berbagai performer terbaik.
-
-</p>
-
-
-
-<a href="#" class="btn">
-
-🎟 Pesan Tiket Sekarang
-
-</a>
-
-
-</div>
-
-
-
-<div class="music-icon">
-
-🎤🎶
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- PROFILE -->
-
-
-<div class="profile">
-
-
-<div>
-
-<h3>
-👤 Profil Saya
-</h3>
-
-
-<p>
-Email :
-{{user.email}}
-</p>
-
-
-<p>
-Status :
-Festival Member ✨
+Selamat datang di dashboard customer.
+Nikmati pengalaman festival terbaik bersama kami.
 </p>
 
 
 </div>
 
 
-<div style="font-size:50px">
 
-😊
-
-</div>
+<div class="cards">
 
 
-</div>
-
-
-
-
-
-
-
-
-
-<!-- QUICK MENU -->
-
-
-<div class="quick">
-
-
-<div class="menu-card">
-
-<span>
-🎟
-</span>
-
-<h3>
-Pesan Tiket
-</h3>
-
-</div>
-
-
-
-<div class="menu-card">
-
-<span>
-📅
-</span>
-
-<h3>
-Jadwal
-</h3>
-
-</div>
-
-
-
-<div class="menu-card">
-
-<span>
-🎤
-</span>
-
-<h3>
-Line Up
-</h3>
-
-</div>
-
-
-
-<div class="menu-card">
-
-<span>
-💬
-</span>
-
-<h3>
-Bantuan
-</h3>
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-<!-- EVENT -->
-
-
-<div class="section">
-
+<div class="card">
 
 <h2>
-🎤 Event Terbaru
+🎵
 </h2>
-
-
-
-<div class="event-card">
-
 
 <h3>
-Summer Pop Festival 2026
+Event Tersedia
 </h3>
 
-
 <p>
-📅 15 - 17 Agustus 2026
+Lihat festival yang sedang berlangsung.
 </p>
-
-
-<p>
-📍 Jakarta International Festival Area
-</p>
-
-
-<p>
-✨ Music • Fun • Celebration
-</p>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- JADWAL -->
-
-
-<div class="section">
-
-
-<h2>
-📅 Jadwal Festival
-</h2>
-
-
-
-<div class="schedule">
-
-
-<div class="schedule-item">
-
-<b>
-15 Agustus
-</b>
-
-Opening Festival
-
-18.00 WIB
-
-</div>
-
-
-
-
-<div class="schedule-item">
-
-<b>
-16 Agustus
-</b>
-
-Main Performance
-
-19.00 WIB
-
-</div>
-
-
-
-
-<div class="schedule-item">
-
-<b>
-17 Agustus
-</b>
-
-Grand Closing
-
-20.00 WIB
-
-</div>
-
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-
-
-<!-- TICKET -->
-
-
-<div class="section">
-
-
-<h2>
-🎟 Tiket Saya
-</h2>
-
-
-
-<div class="ticket">
-
-
-<h2>
-Belum Ada Tiket
-</h2>
-
-
-<p>
-Kamu belum memiliki tiket festival.
-Yuk pesan sekarang!
-</p>
-
-
 
 <button>
-
-Pesan Tiket
-
+Lihat Event
 </button>
 
-
-</div>
-
-
 </div>
 
 
 
+<div class="card">
 
+<h2>
+🎫
+</h2>
+
+<h3>
+Tiket Saya
+</h3>
+
+<p>
+Cek tiket yang sudah kamu pesan.
+</p>
+
+<button>
+Lihat Tiket
+</button>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>
+💳
+</h2>
+
+<h3>
+Pembayaran
+</h3>
+
+<p>
+Pantau status pembayaran.
+</p>
+
+<button>
+Cek Pembayaran
+</button>
+
+</div>
+
+
+
+<div class="card">
+
+<h2>
+🎟️
+</h2>
+
+<h3>
+E-Ticket
+</h3>
+
+<p>
+Tampilkan tiket digital.
+</p>
+
+<button>
+Buka Tiket
+</button>
+
+</div>
+
+
+
+</div>
 
 
 </div>
 
 
 </body>
-
 </html>
