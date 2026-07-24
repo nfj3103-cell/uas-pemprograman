@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<title>Customer Dashboard</title>
+<title>
+Customer Dashboard
+</title>
+
 
 <style>
 
 body{
-    margin:0;
-    font-family:Arial;
-    background:#fff6e5;
+
+margin:0;
+font-family:Arial;
+background:#fff4dd;
+
 }
 
 
@@ -17,91 +23,163 @@ body{
 
 .navbar{
 
-    background:#ff9800;
-    color:white;
-    padding:20px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+background:linear-gradient(
+45deg,
+#ff9800,
+#ff6f61
+);
+
+color:white;
+
+padding:20px 40px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
 
 }
 
 
 .logo{
 
-    font-size:24px;
-    font-weight:bold;
+font-size:25px;
+
+font-weight:bold;
 
 }
 
 
 .logout{
 
-    background:white;
-    color:#ff9800;
-    padding:10px 20px;
-    border-radius:20px;
-    text-decoration:none;
+color:#ff9800;
+
+background:white;
+
+padding:10px 20px;
+
+border-radius:20px;
+
+text-decoration:none;
 
 }
 
 
-/* container */
+
+/* content */
 
 .container{
 
-    padding:40px;
+padding:40px;
+
+animation:fade .7s;
 
 }
+
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
 
 
 .welcome{
 
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    box-shadow:0 5px 20px #ddd;
+background:white;
+
+padding:30px;
+
+border-radius:25px;
+
+box-shadow:0 10px 30px #ddd;
 
 }
+
 
 
 .cards{
 
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-    margin-top:30px;
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:20px;
+
+margin-top:30px;
 
 }
+
 
 
 .card{
 
-    background:white;
-    padding:25px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 5px 15px #ddd;
+background:white;
+
+padding:25px;
+
+border-radius:20px;
+
+box-shadow:0 8px 20px #ddd;
+
+transition:.3s;
 
 }
+
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
 
 
 .card h2{
 
-    color:#ff9800;
+color:#ff9800;
 
 }
 
 
-button{
 
-    background:#ff9800;
-    color:white;
-    border:none;
-    padding:10px 20px;
-    border-radius:20px;
+.list{
+
+margin-top:20px;
+
+background:white;
+
+padding:25px;
+
+border-radius:20px;
 
 }
+
+
+.item{
+
+padding:15px;
+
+border-bottom:1px solid #eee;
+
+}
+
 
 
 </style>
@@ -109,22 +187,25 @@ button{
 </head>
 
 
+
 <body>
 
 
 <div class="navbar">
+
 
 <div class="logo">
 🎵 Summer Pop Festival
 </div>
 
 
-<a class="logout" href="/logout/">
+<a href="/logout/" class="logout">
 Logout
 </a>
 
 
 </div>
+
 
 
 
@@ -134,16 +215,15 @@ Logout
 <div class="welcome">
 
 <h1>
-Halo, {{user.first_name}} 👋
+Halo {{user.first_name}} 👋
 </h1>
 
 <p>
-Selamat datang di dashboard customer.
-Nikmati pengalaman festival terbaik bersama kami.
+Selamat datang kembali di Summer Pop Festival.
 </p>
 
-
 </div>
+
 
 
 
@@ -157,16 +237,12 @@ Nikmati pengalaman festival terbaik bersama kami.
 </h2>
 
 <h3>
-Event Tersedia
+Event
 </h3>
 
 <p>
-Lihat festival yang sedang berlangsung.
+{{events.count}} event tersedia
 </p>
-
-<button>
-Lihat Event
-</button>
 
 </div>
 
@@ -179,16 +255,12 @@ Lihat Event
 </h2>
 
 <h3>
-Tiket Saya
+Booking
 </h3>
 
 <p>
-Cek tiket yang sudah kamu pesan.
+{{bookings.count}} tiket dipesan
 </p>
-
-<button>
-Lihat Tiket
-</button>
 
 </div>
 
@@ -205,12 +277,8 @@ Pembayaran
 </h3>
 
 <p>
-Pantau status pembayaran.
+{{payments.count}} transaksi
 </p>
-
-<button>
-Cek Pembayaran
-</button>
 
 </div>
 
@@ -227,22 +295,59 @@ E-Ticket
 </h3>
 
 <p>
-Tampilkan tiket digital.
+Tiket digital kamu
 </p>
 
-<button>
-Buka Tiket
-</button>
+</div>
+
 
 </div>
 
 
 
+
+
+<div class="list">
+
+
+<h2>
+🎵 Event Tersedia
+</h2>
+
+
+{% for event in events %}
+
+
+<div class="item">
+
+<b>
+{{event.nama_event}}
+</b>
+
+<br>
+
+{{event.tanggal}}
+
 </div>
+
+
+{% empty %}
+
+<p>
+Belum ada event.
+</p>
+
+
+{% endfor %}
+
+
+</div>
+
 
 
 </div>
 
 
 </body>
+
 </html>

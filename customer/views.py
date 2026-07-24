@@ -1,13 +1,7 @@
 from django.shortcuts import render
-from django.shortcuts import render
+from events.models import Event, Booking, Payment
 
-def dashboard_customer(request):
 
-    return render(
-        request,
-        "customer/dashboard.html"
-        
-    )
 def home(request):
 
     return render(
@@ -18,7 +12,38 @@ def home(request):
 
 def dashboard_customer(request):
 
+    user = request.user
+
+
+    # ambil data event
+    events = Event.objects.all()
+
+
+    # ambil booking milik customer
+    bookings = Booking.objects.filter(
+        user=user
+    )
+
+
+    # ambil pembayaran customer
+    payments = Payment.objects.filter(
+        booking__user=user
+    )
+
+
+    context = {
+
+        "events": events,
+
+        "bookings": bookings,
+
+        "payments": payments,
+
+    }
+
+
     return render(
         request,
-        "customer/dashboard.html"
+        "customer/dashboard.html",
+        context
     )
