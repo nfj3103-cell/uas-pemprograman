@@ -1,0 +1,17 @@
+# Django
+*.log
+db.sqlite3
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+env/
+
+# Media
+media/
+
+# VS Code
+.vscode/

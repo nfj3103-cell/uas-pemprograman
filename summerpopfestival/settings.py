@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'dashboard_admin',
     'customer',
     'petugas',
+    'events',
 ]
 
 MIDDLEWARE = [
