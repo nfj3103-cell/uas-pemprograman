@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from events.models import Event, Booking, Payment
+from events.models import Event, Booking, Payment, ETicket
 
 
 def home(request):
@@ -10,23 +10,32 @@ def home(request):
     )
 
 
+
 def dashboard_customer(request):
 
     user = request.user
 
 
-    # ambil data event
-    events = Event.objects.all()
+    # event yang aktif
+    events = Event.objects.filter(
+        status="AKTIF"
+    )
 
 
-    # ambil booking milik customer
+    # booking milik customer
     bookings = Booking.objects.filter(
         user=user
     )
 
 
-    # ambil pembayaran customer
+    # pembayaran customer
     payments = Payment.objects.filter(
+        booking__user=user
+    )
+
+
+    # e-ticket customer
+    etickets = ETicket.objects.filter(
         booking__user=user
     )
 
@@ -38,6 +47,8 @@ def dashboard_customer(request):
         "bookings": bookings,
 
         "payments": payments,
+
+        "etickets": etickets,
 
     }
 
