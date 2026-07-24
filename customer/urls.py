@@ -17,4 +17,17 @@ urlpatterns = [
         name="dashboard_customer"
     ),
 
+    path(
+    "event/<int:id>/",
+    views.detail_event,
+    name="detail_event"
+    ),
+
+
+    path(
+    "booking/<int:id>/",
+    views.booking_ticket,
+    name="booking_ticket"
+    ),
+
 ]

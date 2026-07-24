@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>
+Detail Event
+</title>
+
+<style>
+
+body{
+
+font-family:Arial;
+background:#fff5e6;
+
+}
+
+.container{
+
+width:600px;
+margin:50px auto;
+background:white;
+padding:30px;
+border-radius:20px;
+
+}
+
+
+.ticket{
+
+padding:15px;
+border-bottom:1px solid #ddd;
+
+}
+
+
+button{
+
+background:#ff9800;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:20px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+{{event.nama_event}}
+</h1>
+
+
+<p>
+📅 {{event.tanggal}}
+</p>
+
+
+<p>
+📍 {{event.lokasi}}
+</p>
+
+
+<p>
+{{event.deskripsi}}
+</p>
+
+
+
+<h2>
+Pilihan Tiket
+</h2>
+
+
+
+{% for ticket in tickets %}
+
+
+<div class="ticket">
+
+
+<b>
+{{ticket.nama_tiket}}
+</b>
+
+
+<br>
+
+Kategori:
+{{ticket.kategori}}
+
+
+<br>
+
+Harga:
+Rp {{ticket.harga}}
+
+
+<br>
+
+
+Stok:
+{{ticket.stok}}
+
+
+
+<form method="POST" action="/booking/{{ticket.id}}/">
+
+{% csrf_token %}
+
+
+<button type="submit">
+
+Beli Tiket
+
+</button>
+
+
+</form>
+
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+</body>
+
+</html>
